@@ -13,20 +13,12 @@ iris.close()
 
 iris = open('IRIS.csv','r')
 
-target = numpy.loadtxt(iris, delimiter=',', dtype = 'string',usecols=[8])
+target = numpy.loadtxt(iris, delimiter=',', dtype = 'str',usecols=[8])
 
 iris.close()
 
-print data,'\n',target
-
-# print dataset.data,'\n',dataset.target
 
 model.fit(data,target)
 
-print model
+graphviz.Source(tree.export_graphviz(model, out_file=None)).render("iris_1")
 
-graph_data = tree.export_graphviz(model, out_file=None)
-
-graph = graphviz.Source(graph_data)
-
-graph.render("iris")
